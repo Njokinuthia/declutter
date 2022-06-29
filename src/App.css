@@ -49,6 +49,19 @@ h5:hover{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: left;
+  background-color:  rgb(10, 10, 10, 0.5);
   
+}
+
+a.active, a:hover{
+  background-color: #7BBB5D;
+  color: white;
+  text-decoration: none;  
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+a{
+  color: #7BBB5D;
+  text-decoration: none;  
 }

@@ -74,7 +74,7 @@ const Catalog = () => {
   )
 
   useEffect(() => {
-    fetch("http://localhost:9292/items/sofas")
+    fetch("http://localhost:9292/items/beds")
       .then(resp => resp.json())
       .then(data => console.log(data))
   }, [])
@@ -92,7 +92,7 @@ const Catalog = () => {
   return (
     <div className='linearBackground border'>
       <Navbar />
-      <h3 className='green'>Home / Profile</h3>
+      <h3 className='green'>Category: Beds</h3>
       <div className='container-fluid'>
         <div className='d-flex flex-wrap'>
           {itemCard}

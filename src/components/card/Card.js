@@ -5,7 +5,7 @@ const Card = ({ image, price, details, description }) => {
 
   return (
 
-    <div className='border text-white mx-2 my-2 itemCard'>
+    <div className='text-white mx-2 my-2 itemCard'>
       <img src={image} alt="item" height="auto" width="100%"></img>
       <p>{details}</p>
       <p>Ksh{price} </p>

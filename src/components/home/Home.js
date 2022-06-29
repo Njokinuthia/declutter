@@ -1,15 +1,23 @@
 import React from 'react'
+import {useNavigate} from "react-router-dom"
 import Navbar from '../navbar/Navbar'
 import "./Home.css"
 
 const Home = () => {
+  let navigate = useNavigate();
+
+  function handleSubmit(event) {
+    event.preventDefault();   
+    navigate("/catalog")
+
+  }
 
   return (
     <div className='container-fluid border background'>
      
       <Navbar />
       <div>
-        <form >
+        <form onSubmit={handleSubmit}>
           <input className="searchItemInput text-white" list="furniture" name="furniture" placeholder='What are you looking for?'></input>
           <select id="furniture">
             <option value="Beds"></option>
@@ -17,16 +25,7 @@ const Home = () => {
             <option value="Tables"></option>
           </select>
         </form>
-
-        {/* <form action="#">
-          <label for="lang">Language</label>
-          <select name="languages" id="lang">            
-            <option value="c#">C#</option>
-            <option value="C++">C++</option>
-            <option value="erlang">Erlang</option>
-          </select>
-          <input type="submit" value="Submit" />
-        </form> */}
+        
       </div>
       <div className='declutter'>
         <h1>DECLUTTER</h1>
