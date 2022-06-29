@@ -1,21 +1,19 @@
 import React from 'react'
 
-const Card = ({image,price,details,description}) => {
-  
+const Card = ({ image, price, details, description }) => {
+
 
   return (
-    <div className='container'>
-      <div className='row'>
-        <div className='border text-white col-md-3 my-2'>
-          <img src={image} alt="item"></img>
-          <p>{details}</p>
-          <p>Ksh{price} </p>
-          <p>Description: {description}</p>
-          <button className='text-white sellBtn'>BUY</button>
-        </div>
-      </div>
+
+    <div className='border text-white mx-2 my-2 itemCard'>
+      <img src={image} alt="item" height="auto" width="100%"></img>
+      <p>{details}</p>
+      <p>Ksh{price} </p>
+      <p>Description: {description}</p>
+      <button className='text-white sellBtn'>BUY</button>
     </div>
-    
+
+
   )
 }
 

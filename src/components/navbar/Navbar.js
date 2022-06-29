@@ -8,7 +8,7 @@ const Navbar = () => {
       <h5>Declutter</h5>
       <div className="d-flex justify-content-around w-50 ">
         <NavLink to="/" >Home</NavLink>
-        <NavLink to="/login">Profile</NavLink>
+        <NavLink to="/catalog">Catalog</NavLink>
         <NavLink to="/adpage">Contacts</NavLink>
         <button className='sellBtn'>SELL</button>
       </div>      
