@@ -1,20 +1,33 @@
-import { BrowserRouter, Route, Routes} from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { useState } from "react";
 import Home from "./components/home/Home.js"
 import Login from "./components/login/Login.js";
 import Adpage from "./components/adpage/Adpage.js";
 import Catalog from "./components/catalog/Catalog.js";
+import SignUpForm from "./components/signUpForm/SignUpForm.js";
 
 
 import './App.css';
 function App() {
+  const [choice, setChoice] = useState("")
+
+  function handleSelect(choiceChange) {  
+    setChoice(choiceChange)
+  }
+  // console.log(choice)
+
+
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Home setChoice={handleSelect} />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          {/* <Route path="/signup" element={<SignUpForm />}></Route> */}
+
+          <Route exact path="/signupform" element={<SignUpForm />}></Route>
           <Route path="/adpage" element={<Adpage />}></Route>
-          <Route path="/catalog" element={<Catalog/>}></Route>          
+          <Route path="/catalog" element={<Catalog choice={choice} />}></Route>          
         </Routes>
       </BrowserRouter>
     </>

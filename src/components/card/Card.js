@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Card = ({ image, price, details, description }) => {
 
@@ -11,6 +12,7 @@ const Card = ({ image, price, details, description }) => {
       <p>Ksh{price} </p>
       <p>Description: {description}</p>
       <button className='text-white sellBtn'>BUY</button>
+      <NavLink to="/" className='sellBtn'>BUY</NavLink>
     </div>
 
 

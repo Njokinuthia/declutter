@@ -10,14 +10,13 @@ const Navbar = () => {
 
   return (
     <div className="navbar d-flex justify-content-between">
-      <h5>Declutter</h5>
+      <h2 className='green'>Declutter</h2>
       <div className="d-flex justify-content-around w-50 ">
         <NavLink exact to="/" >Home</NavLink>
         <NavLink to="/catalog">Catalog</NavLink>
         <NavLink to="/adpage">Contacts</NavLink>
         <NavLink to="/login" className='sellBtn'>SELL</NavLink>
-
-        {/* <button onClick={handleSell} className='sellBtn'>SELL</button> */}
+        <NavLink exact to="/signupform">sss</NavLink>        
       </div>
     </div>
   )

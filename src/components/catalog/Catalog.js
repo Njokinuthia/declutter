@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Card from '../card/Card'
 import Navbar from '../navbar/Navbar'
 
-const Catalog = () => {
+const Catalog = ({ choice }) => {
   const [categoryData, setCategoryData] = useState([
     {
       "id": 1,
@@ -35,48 +35,19 @@ const Catalog = () => {
         "password": "password",
         "contact": "+254701234567"
       }
-    },
-    {
-      "id": 3,
-      "category": "beds",
-      "image_url": "item3 image",
-      "condition": "okay",
-      "price": 400,
-      "details": "kingsize",
-      "seller_id": 2,
-      "seller": {
-        "id": 2,
-        "name": "Mary Mashimoto",
-        "email": "mary@email.com",
-        "password": "password",
-        "contact": "+254701222345"
-      }
-    },
-    {
-      "id": 4,
-      "category": "beds",
-      "image_url": "item4 image",
-      "condition": "good",
-      "price": 800,
-      "details": "queen size",
-      "seller_id": 2,
-      "seller": {
-        "id": 2,
-        "name": "Mary Mashimoto",
-        "email": "mary@email.com",
-        "password": "password",
-        "contact": "+254701222345"
-      }
     }
   ]
-
-    
-  )
+  )  
 
   useEffect(() => {
-    fetch("http://localhost:9292/items/beds")
+    // console.log("this is my choice: " + choice)
+
+    fetch(`http://localhost:9292/items/${choice}`)
       .then(resp => resp.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data)
+        setCategoryData(data)
+      } )
   }, [])
 
  

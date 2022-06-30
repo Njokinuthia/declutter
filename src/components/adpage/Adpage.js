@@ -1,24 +1,13 @@
-import { useState, useEffect, useReducer } from 'react'
+import { useState } from 'react'
 import Navbar from '../navbar/Navbar'
 import "./Adpage.css"
+import { NavLink } from 'react-router-dom'
 
 
 const Adpage = () => {
 
-  // reducer
-  // function reducer(state,action) {
-  //   return 
-  // }
-
-  // const [state, dispatch] = useReducer(reducer, {
-  //   condition: "",
-  //   price: 50000,
-  //   item: "",
-  //   description: ""
-  // })
-
   const [newAd, setNewAd] = useState({
-    category: "",    
+    category: "",
     image_url: "",
     condition: "",
     price: 50000,
@@ -29,6 +18,7 @@ const Adpage = () => {
   function handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
+    console.log(event.target.value)
     setNewAd({
       ...newAd, [name]: value,
     });
@@ -36,8 +26,8 @@ const Adpage = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("new add set data is " + newAd)
-    console.log(`new add set is ${newAd}`)
+
+    console.log(newAd.image_url)
     console.log(newAd)
 
     fetch("http://localhost:9292/items", {
@@ -48,24 +38,27 @@ const Adpage = () => {
       body: JSON.stringify(newAd),
     })
       .then(resp => resp.json())
-      .then(data => console.table( data))
+      .then(data => console.table(data))
       .catch((error) => {
         console.log("your error:" + error)
-      })  
-    
+      })
   }
 
 
   return (
     <div className='container-fluid border linearBackground '>
       <Navbar />
-      <h3 className='green'>Post Ad</h3>
+      <h3 className='green my-4'>
+        <NavLink to="/adpage" className=''>Post Ad</NavLink> /
+        <NavLink to="/" className="">My Ads</NavLink>
+      </h3>
+
 
       <form className='adCont' onSubmit={handleSubmit}>
         <div className='d-flex justify-content-between
         '>
           <div className='adDetails'>
-            <label className="green" htmlFor='itemCategory'>Category</label>
+            <label className="green my-4" htmlFor='itemCategory'>Category</label>
             <select>
               <option value="beds">Beds</option>
               <option value="sofas">Sofas</option>
@@ -81,17 +74,19 @@ const Adpage = () => {
               <input type="number" placeholder="Price in Ksh" name="price" value={newAd.price} onChange={handleChange} required />
 
             </div>
-           
+
           </div>
-          <div className='adImage green border'>
+          <div className=' green border'>
             Image Upload
+            <input type="file" name="image_url" value={newAd.image_url} onChange={handleChange} alt="upload"></input>
           </div>
         </div>
         <div>
           <input className="additionalAdDetails" type="text" placeholder="Item Description" name="description" value={newAd.description} onChange={handleChange} required />
-
         </div>
         <button type="submit" className="loginBtn">Submit</button>
+        {/* <NavLink to="/" className='loginBtn'>BUY</NavLink> */}
+
 
       </form>
 

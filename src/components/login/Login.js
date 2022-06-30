@@ -1,55 +1,75 @@
-import React from 'react'
+import { useState } from 'react'
 import './Login.css';
+import LogInForm from '../logInForm/LogInForm';
+import SignUpForm from '../signUpForm/SignUpForm';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase-config';
+
 
 const Login = () => {
+  const [signUpEmail, setSignUpEmail] = useState("")
+  const [signUpPassword, setSignUpPassword] = useState("")
 
-  function LogInForm() {
-    return (
-      <div className='background'>
-        <form className="formContainer login">
-          <h5 className='green'>Login</h5>
-          <div>
-            <div >
-              <input type="text" placeholder="user email" required />
-            </div>
-            <div>
-              <input type="password" placeholder="Password" required />
-            </div>
-          </div>
-          <p>Don't have an account?<a className="green px-3" href="./" >Sign Up</a></p>
-          <button type="submit" className="loginBtn">Submit</button>
-        </form>
+  const [logInEmail, setLogInEmail] = useState("")
+  const [logInPassword, setLogInPassword] = useState("")
 
-      </div>
-    )
+  function handleEmail(emailChange) {
+    setSignUpEmail(emailChange)
+    console.log(emailChange)
   }
 
-  function SignUpForm() {
-    return (
-      <div className='background'>
-        <form className="formContainer login">
-          <h5 className='green'>Sign Up</h5>
-          <div>
-            <div >
-              <input type="text" placeholder="Email Address" required />
-            </div>
-            <div>
-              <input type="password" placeholder="Password" required />
-            </div>
-            <div>
-              <input type="password" placeholder="Confirm Password" required />
-            </div>
-          </div>
-          <button type="submit" className="loginBtn">Submit</button>
-        </form>
-
-      </div>
-    )
+  function handlePassword(passwordChange) {
+    setSignUpPassword(passwordChange)
+    console.log(passwordChange)
   }
+
+  function handleLogInEmail(emailChange) {
+    setLogInEmail(emailChange)
+    console.log(emailChange)
+  }
+
+  function handleLogInPassword(passwordChange) {
+    setLogInPassword(passwordChange)
+    console.log(passwordChange)
+  }
+  const register = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        signUpEmail,
+        signUpPassword
+      );
+      console.log(user)
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const login = async () => {
+
+  };
+
+  const logout = async () => {
+
+  };
+
 
   return (
-    // <LogInForm />
-    <SignUpForm/>
+    <>
+      <LogInForm logInEmail={logInEmail}
+        handleLogInEmail={handleLogInEmail}
+        logInPassword={logInPassword}
+        handleLogInPassword={handleLogInPassword}
+        register={register}
+      />
+      
+      <SignUpForm signUpEmail={signUpEmail}
+        handleEmail={handleEmail}
+        signUpPassword={signUpPassword}
+        handlePassword={handlePassword}
+        register={register}
+      />
+    </>
   )
 }
 
