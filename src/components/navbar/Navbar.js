@@ -14,9 +14,9 @@ const Navbar = () => {
       <div className="d-flex justify-content-around w-50 ">
         <NavLink exact to="/" >Home</NavLink>
         <NavLink to="/catalog">Catalog</NavLink>
-        <NavLink to="/adpage">Contacts</NavLink>
+        <NavLink to="/adpage">Adpage</NavLink>
         <NavLink to="/login" className='sellBtn'>SELL</NavLink>
-        <NavLink exact to="/signupform">sss</NavLink>        
+        {/* <NavLink exact to="/signupform"></NavLink>         */}
       </div>
     </div>
   )

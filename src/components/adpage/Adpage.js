@@ -50,7 +50,7 @@ const Adpage = () => {
       <Navbar />
       <h3 className='green my-4'>
         <NavLink to="/adpage" className=''>Post Ad</NavLink> /
-        <NavLink to="/" className="">My Ads</NavLink>
+        <NavLink to="/myadslist" className="">My Ads</NavLink>
       </h3>
 
 

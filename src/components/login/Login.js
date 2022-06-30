@@ -32,6 +32,8 @@ const Login = () => {
     setLogInPassword(passwordChange)
     console.log(passwordChange)
   }
+
+  // FIREBASE AUTHENTICATION
   const register = async () => {
     try {
       const user = await createUserWithEmailAndPassword(
@@ -61,10 +63,10 @@ const Login = () => {
         logInPassword={logInPassword}
         handleLogInPassword={handleLogInPassword}
         register={register}
-      />
+      />     
       
       <SignUpForm signUpEmail={signUpEmail}
-        handleEmail={handleEmail}
+        onChangeEmail={handleEmail}
         signUpPassword={signUpPassword}
         handlePassword={handlePassword}
         register={register}

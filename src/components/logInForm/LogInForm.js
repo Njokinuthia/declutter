@@ -1,6 +1,15 @@
 import { NavLink } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
+
 
 function LogInForm({LogInEmail ,handleLogInEmail,logInPassword ,handleLogInPassword, }) {
+  let navigate = useNavigate();
+
+  function gotToAdPage(event) {
+    event.preventDefault();
+    navigate("/adpage")
+  }
+
   return (
     <div className='background'>
       <form className="formContainer login">
@@ -19,9 +28,9 @@ function LogInForm({LogInEmail ,handleLogInEmail,logInPassword ,handleLogInPassw
               required />
           </div>
         </div>
-        {/* <p>Don't have an account?<a className="green px-3" href="/adpage">Sign Up</a></p> */}
-        {/* <button type="submit" className="loginBtn">Submit</button> */}
-        <NavLink to="/adpage" className='loginBtn'>Submit</NavLink>
+        <p>Don't have an account?<a className="green px-3" href="/signupform">Sign Up</a></p>
+        <button onSubmit={gotToAdPage} type="submit" className="loginBtn">Submit</button>
+        {/* <NavLink to="/adpage" className='loginBtn'>Submit</NavLink> */}
 
       </form>
 
