@@ -10,15 +10,15 @@ const Adpage = ({ myAccount, getIdForAd }) => {
   if (myAccount.length === 0) {
     console.log("no id to find")
   } else {
-    getIdForAd(myAccount[0].id)
-    console.log(myAccount[0].id)
+    // getIdForAd(myAccount[0].id)
+    // console(myAccount[0].id)
   } 
  
   const [newAd, setNewAd] = useState({
     category: "",
     image_url: "",
     condition: "",
-    price: 0,
+    price: "",
     details: "",
     description: "",
     seller_id:""
@@ -29,7 +29,7 @@ const Adpage = ({ myAccount, getIdForAd }) => {
     const value = event.target.value;
     console.log(event.target.value)
     setNewAd({
-      ...newAd, [name]: value,
+      ...newAd, [name]: value
     });
   }
 
@@ -50,7 +50,8 @@ const Adpage = ({ myAccount, getIdForAd }) => {
       .then(data => console.table(data))
       .catch((error) => {
         console.log("your error:" + error)
-      })      
+      })   
+        
   }
 
   return (
@@ -63,14 +64,11 @@ const Adpage = ({ myAccount, getIdForAd }) => {
       </h3>
 
       <form className='adCont' onSubmit={handleSubmit}>
-        <div className='d-flex justify-content-between'>
-          <div className='adDetails'>
-            <label className="green my-4" htmlFor='itemCategory'>Category</label>
-            <select>
-              <option value="beds">Beds</option>
-              <option value="sofas">Sofas</option>
-              <option value="tables">Tables</option>
-            </select>
+        <div className='d-flex flex-column justify-content-between '>
+          <div className='adDetails'>           
+            <div>
+              <input type="text" placeholder="Category" name="category" value={newAd.category} onChange={handleChange} required />
+            </div>
             <div>
               <input type="text" placeholder="Item Name" name="details" value={newAd.item} onChange={handleChange} required />
             </div>
@@ -81,9 +79,8 @@ const Adpage = ({ myAccount, getIdForAd }) => {
               <input type="number" placeholder="Price in Ksh" name="price" value={newAd.price} onChange={handleChange} required />
             </div>
           </div>
-          <div className=' green border'>
-            Image Upload
-            <input type="file" name="image_url" value={newAd.image_url} onChange={handleChange} alt="upload"></input>
+          <div className='green'>            
+            <input placeholder="Item Image" type="file" name="image_url" value={newAd.image_url} onChange={handleChange} alt="upload"></input>
           </div>
         </div>
         <div>

@@ -26,8 +26,8 @@ h5:hover{
   border-radius: 10px;
   padding: 0px 20px;
 }
-.w-50{
-  width: 50%;
+.w-20{
+  width: 20%;
 }
 
 .green{
@@ -39,8 +39,7 @@ h5:hover{
   padding-left: 2%;
 }
 .linearBackground { 
-  background-image: linear-gradient(#121511,#656B6B);
-  /* height: 100vh; */
+  background-image: linear-gradient(#121511,#656B6B);  
 }
 .itemCard{
   border-radius: 10px;
@@ -50,8 +49,7 @@ h5:hover{
   flex-direction: column;
   justify-content: space-evenly;
   align-items: left;
-  background-color:  rgb(10, 10, 10, 0.5);
-  
+  background-color:  rgb(10, 10, 10, 0.5);  
 }
 
 a.active, a:hover{
@@ -64,4 +62,8 @@ a.active, a:hover{
 a{
   color: #7BBB5D;
   text-decoration: none;  
+}
+
+.height{
+  height: 200vh;
 }

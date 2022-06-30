@@ -24,18 +24,13 @@ function App() {
 
   function getIdForAd(id) {
     setId(id)
-  }
-
-
-  console.log(myAccount)
-  console.log(myAccount[0].id)
-  console.log(id)
-
+  } 
 
   return (
     <>
       <BrowserRouter>
         <Routes>
+          
           <Route path="/" element={<Home setChoice={handleSelect} />}></Route>
           <Route path="/login" element={<Login getUserData={getUserData} />}></Route>
           <Route path="/adpage" element={<Adpage myAccount={myAccount} getIdForAd={getIdForAd} />}></Route>

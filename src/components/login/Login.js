@@ -1,13 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Login.css';
 import { useNavigate } from 'react-router';
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-  signInWithEmailAndPassword
-} from 'firebase/auth';
-import { auth } from '../../firebase-config';
 
 
 const Login = ({getUserData}) => {
@@ -58,7 +51,7 @@ const Login = ({getUserData}) => {
     return (
       <div className='background'>
         <form onSubmit={handleSubmit} className="formContainer login">
-          <h5 className='green'>Sign Up -new</h5>
+          <h5 className='green'>Sign Up</h5>
           <div>
             <div >
               <input type="email"
@@ -122,7 +115,7 @@ const Login = ({getUserData}) => {
     return (
       <div className='background'>
         <form onSubmit={handleSubmit} className="formContainer login">
-          <h5 className='green'>Login - new</h5>
+          <h5 className='green'>Login</h5>
           <div>
             <div >
               <input type="email"
