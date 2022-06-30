@@ -4,15 +4,24 @@ import "./Adpage.css"
 import { NavLink } from 'react-router-dom'
 
 
-const Adpage = () => {
-
+const Adpage = ({ myAccount, getIdForAd }) => {
+  
+  console.log(myAccount)
+  if (myAccount.length === 0) {
+    console.log("no id to find")
+  } else {
+    getIdForAd(myAccount[0].id)
+    console.log(myAccount[0].id)
+  } 
+ 
   const [newAd, setNewAd] = useState({
     category: "",
     image_url: "",
     condition: "",
-    price: 50000,
+    price: 0,
     details: "",
-    description: ""
+    description: "",
+    seller_id:""
   });
 
   function handleChange(event) {
@@ -41,22 +50,20 @@ const Adpage = () => {
       .then(data => console.table(data))
       .catch((error) => {
         console.log("your error:" + error)
-      })
+      })      
   }
-
 
   return (
     <div className='container-fluid border linearBackground '>
       <Navbar />
       <h3 className='green my-4'>
         <NavLink to="/adpage" className=''>Post Ad</NavLink> /
-        <NavLink to="/myadslist" className="">My Ads</NavLink>
+        <NavLink to="/myadslist" className=""> Ads</NavLink>
+        {/* <p>{myAccount[0].name} is logged in</p> */}
       </h3>
 
-
       <form className='adCont' onSubmit={handleSubmit}>
-        <div className='d-flex justify-content-between
-        '>
+        <div className='d-flex justify-content-between'>
           <div className='adDetails'>
             <label className="green my-4" htmlFor='itemCategory'>Category</label>
             <select>
@@ -72,9 +79,7 @@ const Adpage = () => {
             </div>
             <div>
               <input type="number" placeholder="Price in Ksh" name="price" value={newAd.price} onChange={handleChange} required />
-
             </div>
-
           </div>
           <div className=' green border'>
             Image Upload
@@ -85,9 +90,6 @@ const Adpage = () => {
           <input className="additionalAdDetails" type="text" placeholder="Item Description" name="description" value={newAd.description} onChange={handleChange} required />
         </div>
         <button type="submit" className="loginBtn">Submit</button>
-        {/* <NavLink to="/" className='loginBtn'>BUY</NavLink> */}
-
-
       </form>
 
     </div>

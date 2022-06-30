@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Login.css';
 import { useNavigate } from 'react-router';
 import {
@@ -10,7 +10,7 @@ import {
 import { auth } from '../../firebase-config';
 
 
-const Login = () => {
+const Login = ({getUserData}) => {
   let navigate = useNavigate();
 
   const [haveAccount, setHaveAccount] = useState(true)
@@ -47,8 +47,7 @@ const Login = () => {
           .catch((error) => {
             console.log("your error:" + error)
           })
-    }
-
+    }    
 
     function handleSubmit(event) {
       event.preventDefault()
@@ -62,7 +61,7 @@ const Login = () => {
           <h5 className='green'>Sign Up -new</h5>
           <div>
             <div >
-              <input type="text"
+              <input type="email"
                 placeholder="Email Address"
                 value={signUpEmail}
                 onChange={e => setSignUpEmail(e.target.value)}
@@ -103,15 +102,22 @@ const Login = () => {
       fetch(`http://localhost:9292/sellers/${logInEmail}/${logInPassword}`)
         .then(resp => resp.json())
         .then(data => {
-          console.log(data)          
+          console.log(data)       
+
+          if (data.length === 0) {
+            console.log("no match found")
+          } else {    
+            setUserData(data)
+            getUserData(data)
+            navigate("/adpage")
+          } 
         })     
     }
 
     function handleSubmit(event) {
       event.preventDefault()
-      logIn()
-      navigate("/adpage")
-    }
+      logIn()       
+    }   
 
     return (
       <div className='background'>
@@ -119,7 +125,7 @@ const Login = () => {
           <h5 className='green'>Login - new</h5>
           <div>
             <div >
-              <input type="text"
+              <input type="email"
                 placeholder="user email"
                 value={logInEmail}
                 onChange={(e) => setLogInEmail(e.target.value)}
@@ -146,11 +152,6 @@ const Login = () => {
     <>
       <div>
         {haveAccount ? <LogInForm /> : <SignUpForm />}
-{/* 
-        <h3>{user?.email}</h3>
-        {user ? <button onClick={logOut}>Signout</button> : <p className='green'> You're not signed in</p>} */}
-
-
       </div>
     </>
   )
