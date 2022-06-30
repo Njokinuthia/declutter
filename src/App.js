@@ -6,6 +6,7 @@ import Adpage from "./components/adpage/Adpage.js";
 import Catalog from "./components/catalog/Catalog.js";
 import SignUpForm from "./components/signUpForm/SignUpForm.js";
 import MyAdsList from "./components/myAdsList/MyAdsList.js";
+import SellerContact from "./components/sellerContact/SellerContact.js";
 
 
 import './App.css';
@@ -28,6 +29,8 @@ function App() {
 
           <Route exact path="/signupform" element={<SignUpForm />}></Route>
           <Route path="/adpage" element={<Adpage />}></Route>
+          <Route path="/sellerContact" element={<SellerContact/>}></Route>
+
           <Route path="/myadslist" element={<MyAdsList/>}></Route>
 
           <Route path="/catalog" element={<Catalog choice={choice} />}></Route>          

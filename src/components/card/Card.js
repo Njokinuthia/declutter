@@ -1,8 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
+
+// import { NavLink } from 'react-router-dom'
 
 const Card = ({ image, price, details, description }) => {
+  let navigate = useNavigate();
 
+  function giveSellerContact() {
+    console.log("to buy item please contact Mary")
+    navigate("/sellerContact")
+
+  }
 
   return (
 
@@ -11,8 +19,8 @@ const Card = ({ image, price, details, description }) => {
       <p>{details}</p>
       <p>Ksh{price} </p>
       <p>Description: {description}</p>
-      <button className='text-white sellBtn'>BUY</button>
-      <NavLink to="/" className='sellBtn'>BUY</NavLink>
+      <button onClick={giveSellerContact} className='text-white sellBtn'>BUY</button>
+      {/* <NavLink to="/" className='sellBtn'>BUY</NavLink> */}
     </div>
 
 

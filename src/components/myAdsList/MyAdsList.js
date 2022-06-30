@@ -40,16 +40,16 @@ const MyAdsList = () => {
     }
   ])
 
-  // useEffect(() => {   
-  //   // fetch(`http://localhost:9292/items/${user.id}`)
+  useEffect(() => {   
+    // fetch(`http://localhost:9292/items/${user.id}`)
 
-  //   fetch(`http://localhost:9292/items/sellers/7`)
-  //     .then(resp => resp.json())
-  //     .then(data => {
-  //       console.log(data)
-  //       // setCategoryData(data)
-  //     })
-  // }, [])
+    fetch(`http://localhost:9292/items/sellers/7`)
+      .then(resp => resp.json())
+      .then(data => {
+        console.log(data)
+        setCategoryData(data)
+      })
+  }, [])
 
 
   let itemCard = categoryData.map(item =>
