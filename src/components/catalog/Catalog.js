@@ -40,7 +40,7 @@ const Catalog = ({ choice }) => {
   ]
   )  
 
-  useEffect(() => {    
+  useEffect(() => {  
 
     fetch(`http://localhost:9292/items/${choice}`)
       .then(resp => resp.json())

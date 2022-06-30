@@ -14,61 +14,20 @@ const Login = () => {
   let navigate = useNavigate();
 
   const [haveAccount, setHaveAccount] = useState(true)
-  const [user, setUser] = useState({})
-
-  // onAuthStateChanged(auth, (currentUser) => {
-  //   setUser(currentUser)
-  // })
+  const [userData, setUserData] = useState({})  
 
   function toggleForms(event) {
     event.preventDefault()
     console.log(haveAccount)
     setHaveAccount(false)
     haveAccount ? console.log("login") : console.log("new account")
-  }
-
-  // const logOut = async () => {
-  //   await signOut(auth)
-  // }
+  } 
 
   function SignUpForm() {
-
     const [signUpEmail, setSignUpEmail] = useState("")
     const [signUpPassword, setSignUpPassword] = useState("")
     const [signUpName, setSignUpName] = useState("")
-
-
-    // const register = async () => {
-    //   try {
-    //     const user = await createUserWithEmailAndPassword(
-    //       auth,
-    //       signUpEmail,
-    //       signUpPassword
-    //     )
-    //     console.log(user)
-
-    //     // fetch("http://localhost:9292/sellers", {
-    //     //   method: "POST",
-    //     //   headers: {
-    //     //     "Content-Type": "application/json"
-    //     //   },
-    //     //   body: JSON.stringify({
-    //     //     name: user.name,
-    //     //     email: user.email,
-    //     //     password: user.password,
-    //     //     contact: user.contact
-    //     //   }),
-    //     // })
-    //     //   .then(resp => resp.json())
-    //     //   .then(data => console.table(data))
-    //     //   .catch((error) => {
-    //     //     console.log("your error:" + error)
-    //     //   })
-
-    //   } catch (error) {
-    //     console.log(error.message)
-    //   }
-    // }
+    const [signUpContact, setSignUpContact] = useState("") 
 
     function register() {
       fetch("http://localhost:9292/sellers", {
@@ -76,9 +35,11 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({
+        body: JSON.stringify({
+            name: signUpName,
             email: signUpEmail,
-            password: signUpPassword
+            password: signUpPassword,
+            contact: signUpContact
           }),
         })
           .then(resp => resp.json())
@@ -92,6 +53,7 @@ const Login = () => {
     function handleSubmit(event) {
       event.preventDefault()
       register()
+      navigate("/adpage")
     }
 
     return (
@@ -119,6 +81,13 @@ const Login = () => {
                 onChange={(e) => setSignUpPassword(e.target.value)}
                 required />
             </div>
+            <div>
+              <input type="text"
+                placeholder="Phone Number"
+                value={signUpContact}
+                onChange={(e) => setSignUpContact(e.target.value)}
+                required />
+            </div>
           </div>
           <button type="submit" className="loginBtn">Submit</button>
         </form>
@@ -130,22 +99,18 @@ const Login = () => {
     const [logInEmail, setLogInEmail] = useState("")
     const [logInPassword, setLogInPassword] = useState("")
 
-    const logIn = async () => {
-      try {
-        const user = await signInWithEmailAndPassword(
-          auth,
-          logInEmail,
-          logInPassword
-        )
-        console.log(user)
-      } catch (error) {
-        console.log(error.message)
-      }
+    function logIn() {
+      fetch(`http://localhost:9292/sellers/${logInEmail}/${logInPassword}`)
+        .then(resp => resp.json())
+        .then(data => {
+          console.log(data)          
+        })     
     }
 
     function handleSubmit(event) {
       event.preventDefault()
       logIn()
+      navigate("/adpage")
     }
 
     return (
