@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 // import { NavLink } from 'react-router-dom'
 
-const Card = ({ image, price, details, description }) => {
+const Card = ({ image, price, details, description,contact,seller }) => {
   let navigate = useNavigate();
 
   function giveSellerContact() {
@@ -19,7 +19,10 @@ const Card = ({ image, price, details, description }) => {
       <p>{details}</p>
       <p>Ksh{price} </p>
       <p>Description: {description}</p>
-      <button onClick={giveSellerContact} className='text-white sellBtn'>BUY</button>
+      <div className='card'>
+        <p className='text-dark'>Call {seller} on {contact} to buy</p> 
+      </div>
+      {/* <button onClick={giveSellerContact} className='text-white sellBtn'>BUY</button> */}
       {/* <NavLink to="/" className='sellBtn'>BUY</NavLink> */}
     </div>
 

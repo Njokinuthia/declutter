@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Card from '../card/Card'
 import Navbar from '../navbar/Navbar'
+import SellerContact from '../sellerContact/SellerContact'
 
 const Catalog = ({ choice }) => {
   const [categoryData, setCategoryData] = useState([
@@ -39,8 +40,7 @@ const Catalog = ({ choice }) => {
   ]
   )  
 
-  useEffect(() => {
-    // console.log("this is my choice: " + choice)
+  useEffect(() => {    
 
     fetch(`http://localhost:9292/items/${choice}`)
       .then(resp => resp.json())
@@ -56,7 +56,9 @@ const Catalog = ({ choice }) => {
       image={item.image_url}
       price={item.price}
       details={item.details}
-      description={item.details}
+      description={item.condition} 
+      contact={item.seller.contact}
+      seller={item.seller.name}
     />
   )
 
@@ -67,7 +69,7 @@ const Catalog = ({ choice }) => {
       <div className='container-fluid'>
         <div className='d-flex flex-wrap'>
           {itemCard}
-        </div>
+        </div>       
       </div>
     </div>
   )

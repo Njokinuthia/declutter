@@ -4,7 +4,6 @@ import Home from "./components/home/Home.js"
 import Login from "./components/login/Login.js";
 import Adpage from "./components/adpage/Adpage.js";
 import Catalog from "./components/catalog/Catalog.js";
-import SignUpForm from "./components/signUpForm/SignUpForm.js";
 import MyAdsList from "./components/myAdsList/MyAdsList.js";
 import SellerContact from "./components/sellerContact/SellerContact.js";
 
@@ -24,10 +23,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home setChoice={handleSelect} />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          {/* <Route path="/signup" element={<SignUpForm />}></Route> */}
+          <Route path="/login" element={<Login />}></Route> 
 
-          <Route exact path="/signupform" element={<SignUpForm />}></Route>
           <Route path="/adpage" element={<Adpage />}></Route>
           <Route path="/sellerContact" element={<SellerContact/>}></Route>
 
