@@ -9,7 +9,6 @@ const SignUpForm = ({ signUpEmail, onChangeEmail, signUpPassword, handlePassword
 
   }
   
-
   return (
     <div className='background'>
       <form className="formContainer login">
