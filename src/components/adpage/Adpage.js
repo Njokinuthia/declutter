@@ -6,13 +6,13 @@ import { NavLink } from 'react-router-dom'
 
 const Adpage = ({ myAccount, getIdForAd }) => {
   
-  console.log(myAccount)
-  if (myAccount.length === 0) {
-    console.log("no id to find")
-  } else {
-    // getIdForAd(myAccount[0].id)
-    // console(myAccount[0].id)
-  } 
+  // console.log(myAccount[0].id)
+
+  // if (myAccount.length === 0) {
+  //   console.log("no id to find")
+  // } else {
+  //   getIdForAd(myAccount[0].id)   
+  // } 
  
   const [newAd, setNewAd] = useState({
     category: "",
@@ -29,15 +29,16 @@ const Adpage = ({ myAccount, getIdForAd }) => {
     const value = event.target.value;
     console.log(event.target.value)
     setNewAd({
-      ...newAd, [name]: value
+      ...newAd, [name]: value, seller_id: myAccount[0].id
     });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    console.log(newAd.image_url)
+    console.log("See your Ad Data below:")
     console.log(newAd)
+    getIdForAd(newAd.id)
 
     fetch("http://localhost:9292/items", {
       method: "POST",

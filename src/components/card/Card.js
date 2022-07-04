@@ -9,7 +9,6 @@ const Card = ({ image, price, details, description,contact,seller }) => {
   function giveSellerContact() {
     console.log("to buy item please contact Mary")
     navigate("/sellerContact")
-
   }
 
   return (
@@ -20,7 +19,7 @@ const Card = ({ image, price, details, description,contact,seller }) => {
       <p>Ksh{price} </p>
       <p>Description: {description}</p>
       <div className='card'>
-        <p className='text-dark'>Call {seller} on {contact} to buy</p> 
+        <p className='text-dark'>Call 0700123456 to buy</p> 
       </div>
       {/* <button onClick={giveSellerContact} className='text-white sellBtn'>BUY</button> */}
       {/* <NavLink to="/" className='sellBtn'>BUY</NavLink> */}

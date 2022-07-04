@@ -26,6 +26,9 @@ function App() {
     setId(id)
   } 
 
+  // console.log(myAccount)
+  // console.log(myAccount.id)
+
   return (
     <>
       <BrowserRouter>
@@ -35,7 +38,7 @@ function App() {
           <Route path="/login" element={<Login getUserData={getUserData} />}></Route>
           <Route path="/adpage" element={<Adpage myAccount={myAccount} getIdForAd={getIdForAd} />}></Route>
           <Route path="/sellerContact" element={<SellerContact />}></Route>
-          <Route path="/myadslist" element={<MyAdsList id={id}/>}></Route>
+          <Route path="/myadslist" element={<MyAdsList myAccount={myAccount}/>}></Route>
           <Route path="/catalog" element={<Catalog choice={choice} />}></Route>
         </Routes>
       </BrowserRouter>

@@ -11,7 +11,7 @@ const Login = ({getUserData}) => {
 
   function toggleForms(event) {
     event.preventDefault()
-    console.log(haveAccount)
+    // console.log(haveAccount)
     setHaveAccount(false)
     haveAccount ? console.log("login") : console.log("new account")
   } 

@@ -37,8 +37,8 @@ const Catalog = ({ choice }) => {
       price={item.price}
       details={item.details}
       description={item.condition} 
-      contact={item.seller.contact}
-      seller={item.seller.name}
+      // contact={item.seller.contact}
+      // seller={item.seller.name}
     />
   )
 
