@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 
 const Adpage = ({ myAccount, getIdForAd }) => {
-  
+
   // console.log(myAccount[0].id)
 
   // if (myAccount.length === 0) {
@@ -13,15 +13,16 @@ const Adpage = ({ myAccount, getIdForAd }) => {
   // } else {
   //   getIdForAd(myAccount[0].id)   
   // } 
- 
+
   const [newAd, setNewAd] = useState({
     category: "",
+    // item:"",
     image_url: "",
     condition: "",
     price: "",
     details: "",
     description: "",
-    seller_id:""
+    seller_id: ""
   });
 
   function handleChange(event) {
@@ -35,7 +36,6 @@ const Adpage = ({ myAccount, getIdForAd }) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-
     console.log("See your Ad Data below:")
     console.log(newAd)
     getIdForAd(newAd.id)
@@ -47,35 +47,46 @@ const Adpage = ({ myAccount, getIdForAd }) => {
       },
       body: JSON.stringify(newAd),
     })
-      .then(resp => resp.json())
-      .then(data => console.table(data))
-      .catch((error) => {
-        console.log("your error:" + error)
-      })   
-        
+    .then(resp => resp.json())
+    .then(data => console.table(data))
+    .catch((error) => {
+      console.log("your error:" + error)
+    })
+
+    setNewAd({
+      category: "",      
+      image_url: "",
+      condition: "",
+      price: "",
+      details: "",
+      description: "",
+      seller_id: ""
+    })
   }
 
   return (
-    <div className='container-fluid border linearBackground '>
-      <Navbar />
-      <div className='green border'>
+    <div className='container linearBackground '>
+      {/* <Navbar /> */}
+      <div className='green  d-flex justify-content-between'>
         <h3 className='my-4'>
           <NavLink to="/adpage" className=''>Post Ad</NavLink> /
           <NavLink to="/myadslist" className=""> Ads</NavLink>
         </h3>
-        <p>{myAccount[0].name} is logged in</p>
-
+        <div className='d-flex flex-column justify-content-between'>
+          <NavLink to="/login" className=''>LogOut</NavLink>
+          <p>{myAccount[0].name} is logged in</p>
+        </div>
       </div>
-      
+
 
       <form className='adCont' onSubmit={handleSubmit}>
         <div className='d-flex flex-column justify-content-between '>
-          <div className='adDetails'>           
+          <div className='adDetails'>
             <div>
               <input type="text" placeholder="Category" name="category" value={newAd.category} onChange={handleChange} required />
             </div>
             <div>
-              <input type="text" placeholder="Item Name" name="details" value={newAd.item} onChange={handleChange} required />
+              <input type="text" placeholder="Item Name" name="details" value={newAd.details} onChange={handleChange} required />
             </div>
             <div>
               <input type="text" placeholder="Item Condition" name="condition" value={newAd.condition} onChange={handleChange} required />
@@ -84,7 +95,7 @@ const Adpage = ({ myAccount, getIdForAd }) => {
               <input type="number" placeholder="Price in Ksh" name="price" value={newAd.price} onChange={handleChange} required />
             </div>
           </div>
-          <div className='green'>            
+          <div className='green'>
             <input placeholder="Item Image" type="file" name="image_url" value={newAd.image_url} onChange={handleChange} alt="upload"></input>
           </div>
         </div>
