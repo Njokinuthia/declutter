@@ -58,11 +58,15 @@ const Adpage = ({ myAccount, getIdForAd }) => {
   return (
     <div className='container-fluid border linearBackground '>
       <Navbar />
-      <h3 className='green my-4'>
-        <NavLink to="/adpage" className=''>Post Ad</NavLink> /
-        <NavLink to="/myadslist" className=""> Ads</NavLink>
-        {/* <p>{myAccount[0].name} is logged in</p> */}
-      </h3>
+      <div className='green border'>
+        <h3 className='my-4'>
+          <NavLink to="/adpage" className=''>Post Ad</NavLink> /
+          <NavLink to="/myadslist" className=""> Ads</NavLink>
+        </h3>
+        <p>{myAccount[0].name} is logged in</p>
+
+      </div>
+      
 
       <form className='adCont' onSubmit={handleSubmit}>
         <div className='d-flex flex-column justify-content-between '>

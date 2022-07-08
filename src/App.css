@@ -1,8 +1,10 @@
 *{
-/* font-family: poppins; */
 font-family: 'Poppins';
 }
-
+body{
+  margin: 0;
+  padding: 0;
+}
 .background{
   background-image: url(../sofa.jpg);
   background-repeat: no-repeat;
@@ -10,13 +12,8 @@ font-family: 'Poppins';
   height: 100vh;  
 }
 
-.navbar{
-  color: white;
-  width: 93%;
-  list-style: none;
-  margin-top: 2%;
-  z-index: 1; 
-}
+
+
 h5:hover{
   color: #7BBB5D;
 }
@@ -40,6 +37,7 @@ h5:hover{
 }
 .linearBackground { 
   background-image: linear-gradient(#121511,#656B6B);  
+  
 }
 .itemCard{
   border-radius: 10px;
@@ -57,8 +55,9 @@ a.active, a:hover{
   color: white;
   text-decoration: none;  
   border-radius: 10px;
-  padding: 2px 8px;
+  padding: 10px 8px;
 }
+
 a{
   color: #7BBB5D;
   text-decoration: none;  

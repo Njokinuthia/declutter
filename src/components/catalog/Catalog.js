@@ -65,7 +65,7 @@ const Catalog = ({ choice }) => {
   )
 
   return (
-    <div className='linearBackground height border'>
+    <div className='linearBackground  border'>
       <Navbar />
       {/* <h3 className='green'>Category: Beds</h3> */}
       <div className=''>

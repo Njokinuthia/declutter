@@ -13,28 +13,22 @@ const Home = ({setChoice}) => {
   } 
 
   return (
-    <div className='container-fluid border background'>
-     
-      <Navbar />
-      <div>
-        {/* <form onSubmit={handleSubmit}>
-          <input className="searchItemInput text-white" list="furniture" name="furniture" placeholder='What are you looking for?'></input>
-          <select id="furniture" onChange = {handleSelect} value={choice}>
-            <option value="Beds"></option>
-            <option value="Sofas"></option>
-            <option value="Tables"></option>
-          </select>
-        </form> */}
-        <form onSubmit={handleSubmit}>
-          <input onChange={(event)=>setChoice(event.target.value)} className="searchItemInput text-white" list="furniture" name="furniture" placeholder='What are you looking for?'></input> 
-        </form>
-        
+  
+    <div className='background container-fluid'>  
+      <div className='row'>
+        <Navbar />
+        <div className='col-md-12'>
+          <form onSubmit={handleSubmit}>
+            <input onChange={(event) => setChoice(event.target.value)} className="searchItemInput text-white" list="furniture" name="furniture" placeholder='What are you looking for?'></input>
+          </form>
+        </div>
+        <div className='declutter col-md-12'>
+          <h1>DECLUTTER</h1>
+          <p>Buy and sell second hand furniture</p>
+        </div>
+        <div className='overlay'></div>
       </div>
-      <div className='declutter'>
-        <h1>DECLUTTER</h1>
-        <p>Buy and sell second hand furniture</p>
-      </div>
-      <div className='overlay'></div>
+    
     </div>
   )
 }
