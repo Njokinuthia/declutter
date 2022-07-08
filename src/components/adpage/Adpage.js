@@ -40,7 +40,7 @@ const Adpage = ({ myAccount, getIdForAd }) => {
     console.log(newAd)
     getIdForAd(newAd.id)
 
-    fetch("http://localhost:9292/items", {
+    fetch("https://declutter-webapp.herokuapp.com/items", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

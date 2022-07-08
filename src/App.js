@@ -10,7 +10,7 @@ import { UserContext } from "./Contexts/UserContext.js";
 
 import './App.css';
 function App() {
-  const [choice, setChoice] = useState("")
+  const [choice, setChoice] = useState(null)
   const [myAccount, setMyAccount] = useState({})
   const[id,setId]=useState(0)
 
@@ -32,8 +32,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          
+        <Routes>          
           <Route path="/" element={<Home setChoice={handleSelect} />}></Route>
           <Route path="/login" element={<Login getUserData={getUserData} />}></Route>
           <Route path="/adpage" element={<Adpage myAccount={myAccount} getIdForAd={getIdForAd} />}></Route>

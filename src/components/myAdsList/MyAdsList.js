@@ -18,7 +18,7 @@ const MyAdsList = ({myAccount}) => {
 
   useEffect(() => {   
     
-    fetch(`http://localhost:9292/items/sellers/${id}`)
+    fetch(`https://declutter-webapp.herokuapp.com/items/sellers/${id}`)
       .then(resp => resp.json())
       .then(data => {
         console.log(data)
@@ -38,7 +38,7 @@ const MyAdsList = ({myAccount}) => {
 
   function deleteAccount(event) {
     event.preventDefault()
-    fetch(`http://localhost:9292/items/seller/${id}`, {
+    fetch(`https://declutter-webapp.herokuapp.com/items/seller/${id}`, {
       method: "DELETE",
     })
       .then((r) => r.json())
@@ -46,7 +46,7 @@ const MyAdsList = ({myAccount}) => {
   }
 
   function deleteItem(event) {
-    fetch(`http://localhost:9292/sellers/${id}`, {
+    fetch(`https://declutter-webapp.herokuapp.com/sellers/${id}`, {
       method: "DELETE",
     })
       .then((r) => r.json())

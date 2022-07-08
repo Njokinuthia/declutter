@@ -14,7 +14,7 @@ const Card = ({ image, price, details, description,contact,seller }) => {
   return (
 
     <div className='text-white mx-2 my-2 itemCard'>
-      <img src={image} alt="item" height="auto" width="100%"></img>
+      <img src={image} alt="item" height="50%" width="100%"></img>
       <p>{details}</p>
       <p>Ksh{price} </p>
       <p>Description: {description}</p>
@@ -24,8 +24,6 @@ const Card = ({ image, price, details, description,contact,seller }) => {
       {/* <button onClick={giveSellerContact} className='text-white sellBtn'>BUY</button> */}
       {/* <NavLink to="/" className='sellBtn'>BUY</NavLink> */}
     </div>
-
-
   )
 }
 
